@@ -1,0 +1,229 @@
+<div class="col-xs-12 col-sm-12 container-1">
+    <button style="margin-right:48px;" (click)="createDweet('revoke','revoke')">
+        <span>Revoke Latest Request</span>
+    </button>
+    <h1 style="font-size:32px;">Available Smart Appliances State</h1>
+    <button style="margin-left:48px" (click)="createDweet(randomAppliance(), randomOperation())">
+        <span>Random Dweet</span>
+    </button>
+</div>
+<div class="row container-2">
+    <div class="col-2 faint-outline">
+        <h3 style="margin-top:30px;">Latest Dweet</h3>
+    </div>
+    <div class="col-4 faint-outline">
+        <h5>
+            Requested at:
+        </h5>
+        <div>
+            <span class="latest-dweet-content" *ngIf="showRequest" innerHTML="{{content.created}}"></span>
+            <span class="latest-dweet-content" *ngIf="!showRequest" innerHTML="{{'Not Available'}}"></span>
+        </div>
+    </div>
+    <div class="col-3 faint-outline">
+        <h5>
+            Requested Appliance:
+        </h5>
+        <div>
+            <input type="text" aria-readonly="true" placeholder="Appliance" readonly
+                [value]="requestedAppliance | uppercase" class="input-appliance">
+            <img class="req-app-img" *ngIf="showRequest" src="{{imageRoot + requestedAppliance + PNG}}" alt="appliance">
+        </div>
+    </div>
+    <div class="col-3 faint-outline">
+        <h5>
+            Requested Operation
+        </h5>
+        <div>
+            <span class="latest-dweet-content" *ngIf="showRequest"
+                innerHTML="{{requestedOperation | uppercase }}"></span>
+            <span class="latest-dweet-content" *ngIf="!showRequest" innerHTML="{{'Not Available'}}"></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span
+                [ngClass]="{'circle-red':requestedOperation==='off', 'circle-green':requestedOperation==='on'}"></span>
+        </div>
+    </div>
+</div>
+<div class="coontainer-3 mt-3">
+    <div class="row container-3a">
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[0] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[0] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[0], (applianceState[0]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[0]==='on', 'btn-danger':applianceState[0]==='off'}">
+                    <span *ngIf="applianceState[0]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[0]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[0]}}
+                </span>
+            </div>
+        </div>
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[1] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[1] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[1], (applianceState[1]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[1]==='on', 'btn-danger':applianceState[1]==='off'}">
+                    <span *ngIf="applianceState[1]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[1]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[1]}}
+                </span>
+            </div>
+        </div>
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[2] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[2] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[2], (applianceState[2]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[2]==='on', 'btn-danger':applianceState[2]==='off'}">
+                    <span *ngIf="applianceState[2]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[2]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[2]}}
+                </span>
+            </div>
+        </div>
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[3] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[3] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[3], (applianceState[3]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[3]==='on', 'btn-danger':applianceState[3]==='off'}">
+                    <span *ngIf="applianceState[3]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[3]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[3]}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row container-3a">
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[4] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[4] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[4], (applianceState[5]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[4]==='on', 'btn-danger':applianceState[4]==='off'}">
+                    <span *ngIf="applianceState[4]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[4]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[4]}}
+                </span>
+            </div>
+        </div>
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[5] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[5] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[5], (applianceState[5]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[5]==='on', 'btn-danger':applianceState[5]==='off'}">
+                    <span *ngIf="applianceState[5]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[5]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[5]}}
+                </span>
+            </div>
+        </div>
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[6] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[6] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[6], (applianceState[6]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[6]==='on', 'btn-danger':applianceState[6]==='off'}">
+                    <span *ngIf="applianceState[6]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[6]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[6]}}
+                </span>
+            </div>
+        </div>
+        <div class="col faint-outline">
+            <div>
+                <img src="{{imageRoot + appliances[7] + PNG}}" class="display-appliance" alt="">
+            </div>
+            <div>
+                <h3 style="text-align:center;">{{appliances[7] | uppercase}}</h3>
+            </div>
+            <div>
+                <button type="button" class="btn" style="margin-left:120px;"
+                    (click)="createDweet(appliances[7], (applianceState[7]==='on')?'off':'on')"
+                    [ngClass]="{'btn-success':applianceState[7]==='on', 'btn-danger':applianceState[7]==='off'}">
+                    <span *ngIf="applianceState[7]==='off'">Turn On</span>
+                    <span *ngIf="applianceState[7]==='on'">Turn Off</span>
+                </button>
+            </div>
+            <div>
+                <span class="status-message">
+                    <img src="./../../assets/images/info.svg" class="info-icon" alt="">
+                    Latest&nbsp;Status&nbsp;:&nbsp;{{masterMessage[7]}}
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
