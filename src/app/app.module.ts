@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { APP_CONFIG, APP_URL_CONFIG } from './app.config';
+import { LearnObservableX1Component } from './learn-observable-x1/learn-observable-x1.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LearnObservableX1Component
   ],
   imports: [
     BrowserModule,
