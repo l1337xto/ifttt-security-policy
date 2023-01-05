@@ -3,3 +3,124 @@
         {{i+1}}: {{da}}
     </span>
 </div>
+<h1 class="heading">User List</h1>
+<button (click)="randomData()">Get More User</button>
+<button (click)="closeAll()">Close All Users</button>
+<div *ngFor="let user of userArray; let i = index; let lastIndex=last">
+    <div>
+        <a href="#" (click)="toggleUser(i)">
+            {{user.id}}:{{user.uid}}
+        </a>
+    </div>
+    <div class="col-xs-12 col-sm-12 row" *ngIf="displayUser[i]">
+        <div class="col-xs-12 col-sm-4">
+            <h1 class="heading"> Personal Details </h1>
+            <div class="user-details-box">
+                <div style="height:128px;" class="addr-dtls-flex">
+                    <span class="addr-heading">Robot Look</span>
+                    <img src="{{user.avatar}}" class="addr-dtls" alt="User Avatar" loading="lazy" height="128px">
+                </div>
+                <br>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Name</span>
+                    <span class="addr-dtls">{{user.last_name}}, {{user.first_name}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Email</span>
+                    <span class="addr-dtls">{{user.email}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Gender</span>
+                    <span class="addr-dtls">{{user.gender}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Phone</span>
+                    <span class="addr-dtls">{{user.phone_number}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">SSN</span>
+                    <span class="addr-dtls">XXX-XX-{{hideSSN(user.social_insurance_number)}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <h1  class="heading">Address</h1>
+            <div class="user-details-box">
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Street Name</span>
+                    <span class="addr-dtls">{{user.address.street_name}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Street Address</span>
+                    <span class="addr-dtls">{{user.address.street_address}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Zip Code</span>
+                    <span class="addr-dtls">{{user.address.zip_code}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">City</span>
+                    <span class="addr-dtls">{{user.address.city}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">State</span>
+                    <span class="addr-dtls">{{user.address.state}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Country</span>
+                    <span class="addr-dtls">{{user.address.country}}</span>
+                </div>
+                <br>
+                <h3  class="dtls-heading">Co-ordinates</h3>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Latitude</span>
+                    <span class="addr-dtls">{{user.address.coordinates.lat}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Lognitude</span>
+                    <span class="addr-dtls">{{user.address.coordinates.lng}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <h1  class="heading">Financials</h1>
+            <div class="user-details-box">
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Credit Card</span>
+                    <span class="addr-dtls">XXXX-XXXX-XXXX{{hideCard(user.credit_card.cc_number)}}</span>
+                </div>
+                <br>
+                <h3 class="dtls-heading">Employment</h3>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Title</span>
+                    <span class="addr-dtls">{{user.employment.title}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Key Skill</span>
+                    <span class="addr-dtls">{{user.employment.key_skill}}</span>
+                </div>
+                <br>
+                <h3 class="dtls-heading">Subscription</h3>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Plan</span>
+                    <span class="addr-dtls">{{user.subscription.plan}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Status</span>
+                    <span class="addr-dtls">{{user.subscription.status}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Payment</span>
+                    <span class="addr-dtls">{{user.subscription.payment_method}}</span>
+                </div>
+                <div class="addr-dtls-flex">
+                    <span class="addr-heading">Term</span>
+                    <span class="addr-dtls">{{user.subscription.term}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="lastIndex">
+        <h5 class="heading" style="cursor:pointer" (click)="scrollTop()">Back To Top</h5>
+    </div>
+</div>

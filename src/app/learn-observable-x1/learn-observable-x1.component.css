@@ -1,0 +1,29 @@
+.user-details-box{
+    padding:12px;
+    border: 3px solid aquamarine;
+}
+.addr-dtls-flex{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(127, 200, 255);
+    min-height: 32px;
+}
+.addr-heading{
+    flex:0 0 30%;
+    text-align: right;
+}
+.addr-heading::after{
+    content:':'
+}
+.addr-dtls{
+    flex:0 0 70%;
+    text-align: right;
+    word-break:break-all;
+}
+.heading{
+    text-align: center;
+}
+.dtls-heading{
+    text-align: center;
+    text-decoration: underline;
+}
